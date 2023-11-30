@@ -1,0 +1,17 @@
+A limitação do Try/Catch:
+
+O bloco try engloba o código que pode lançar exceções, mas pode ser difícil determinar exatamente qual parte do código gerou a exceção,
+Com isso gera a dificuldade de identificação e correção precisa do problema.
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+A limitação do Throw:
+
+Permite lançar exceções manualmente, mas não fornece um mecanismo automático para lidar com diferentes tipos de exceções em um único bloco.
+Isso torna o codigo mais extenso e complexo, imagina se houver várias exceções a serem tratadas, fica totalmente inviavel.
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+A limitação do Finally:
+Útil para garantir a execução de código, mas não trata diretamente a lógica de tratamento de exceções.
+Se uma exceção for lançada no bloco try, o código no bloco finally será executado após o tratamento da exceção, mas não interfere na propagação da exceção.

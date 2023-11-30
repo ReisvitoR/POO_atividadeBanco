@@ -1,0 +1,71 @@
+1- instrução try/cath
+
+permite que envolva um codigo que pode lançar uma exceção
+em um bloco try caso ocorra vc pode "capturar" e tratar ela no bloco catch.
+
+exemplo:
+
+try {
+    // Código que pode gerar uma exceção
+    int resultado = dividir(10, 0);
+} catch (ArithmeticException e) {
+    // Lidar com a exceção
+    System.out.println("Erro de divisão por zero: " + e.getMessage());
+}
+
+-----------------------------------------------------------------------------------------------------------------------
+
+2- Declaração throw
+usado para lançar manualmente uma exceção no codigo
+
+exemplo:
+
+public class ExemploThrow {
+    public static void main(String[] args) {
+        try {
+            verificarIdade(-5);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+    }
+
+    public static void verificarIdade(int idade) {
+        if (idade < 0) {
+            throw new IllegalArgumentException("A idade não pode ser negativa.");
+        }
+    }
+}
+
+----------------------------------------------------------------------------------------------------------------------
+
+3- Instrução Finally
+
+definir um bloco de código que será sempre executado, independentemente de ocorrer ou não uma exceção no bloco try
+
+exemplo:
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class ExemploFinally {
+    public static void main(String[] args) {
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new FileReader("arquivo.txt"));
+            // Código para ler o arquivo
+        } catch (IOException e) {
+            System.out.println("Erro ao ler o arquivo: " + e.getMessage());
+        } finally {
+            // Fechar o recurso, independentemente de uma exceção ter ocorrido ou não
+            try {
+                if (reader != null) {
+                    reader.close();
+                }
+            } catch (IOException e) {
+                System.out.println("Erro ao fechar o arquivo: " + e.getMessage());
+            }
+        }
+    }
+}
+
